@@ -1,96 +1,10 @@
-webpackJsonp([1],{
+webpackJsonp([2],{
 
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(93);
+	module.exports = __webpack_require__(108);
 
-
-/***/ }),
-
-/***/ 93:
-/***/ (function(module, exports, __webpack_require__) {
-
-	
-
-	__webpack_require__(94);
-	__webpack_require__(97);
-	var navSide=__webpack_require__(104);
-	var _mm=__webpack_require__(100);
-	navSide.init({
-		name :'user-center'
-	})
-
-/***/ }),
-
-/***/ 94:
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(95);  //导航栏样式 引进
-
-/***/ }),
-
-/***/ 95:
-/***/ (function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 97:
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(98);
-	var _mm   = __webpack_require__(100);
-	// 通用页面头部
-	var header = {
-	    init : function(){
-	        this.onLoad();
-	        this.bindEvent();
-	    },
-	    onLoad : function(){
-	        var keyword = _mm.getUrlParam('keyword');
-	        // keyword存在，则回填输入框
-	        if(keyword){
-	            $('#search-input').val(keyword);
-	        };
-	    },
-	    bindEvent : function(){
-	        var _this = this;
-	        // 点击搜索按钮以后，做搜索提交
-	        $('#search-btn').click(function(){
-	            _this.searchSubmit();
-	        });
-	        // 输入会车后，做搜索提交
-	        $('#search-input').keyup(function(e){
-	            // 13是回车键的keyCode
-	            if(e.keyCode === 13){
-	                _this.searchSubmit();
-	            }
-	        });
-	    },
-	    // 搜索的提交
-	    searchSubmit : function(){
-	        var keyword = $.trim($('#search-input').val());
-	        // 如果提交的时候有keyword,正常跳转到list页
-	        if(keyword){
-	            window.location.href = './list.html?keyword=' + keyword;
-	        }
-	        // 如果keyword为空，直接返回首页
-	        else{
-	            _mm.goHome();
-	        }
-	    }
-	};
-
-	header.init();
-
-/***/ }),
-
-/***/ 98:
-/***/ (function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -987,62 +901,40 @@ webpackJsonp([1],{
 
 /***/ }),
 
-/***/ 104:
+/***/ 108:
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-	__webpack_require__(105);
-	var _mm  = __webpack_require__(100);
-	var templateIndex   = __webpack_require__(107);
-	// 侧边导航
-	var navSide = {
-	    option : {
-	        name : '',
-	        navList : [
-	            {name : 'user-center', desc : '个人中心', href: './user-center.html'},
-	            {name : 'order-list', desc : '我的订单', href: './order-list.html'},
-	            {name : 'user-pass-update', desc : '修改密码', href: './user-pass-update.html'},
-	            {name : 'about', desc : '关于MMall', href: './about.html'}
-	        ]
-	    },
-	    init : function(option){
-	        // 合并选项
-	        $.extend(this.option, option);  //浅拷贝 只会对第一层生效
-	        this.renderNav();
-	    },
-	    // 渲染导航菜单
-	    renderNav : function(){
-	        // 计算active数据
-	        for(var i = 0, iLength = this.option.navList.length; i < iLength; i++){
-	            if(this.option.navList[i].name === this.option.name){
-	                this.option.navList[i].isActive = true;
-	            }
-	        };
-	        // 渲染list数据
-	        var navHtml = _mm.renderHtml(templateIndex, {
-	            navList : this.option.navList
-	        });
-	        // 把html放入容器
-	        $('.nav-side').html(navHtml);
-	    }
+	__webpack_require__(109);
+	__webpack_require__(111);
+	var _mm = __webpack_require__(100);
 
-	};
-
-	module.exports = navSide;
+	$(function(){
+	    var type        = _mm.getUrlParam('type') || 'default',
+	        $element    = $('.' + type + '-success');
+	    // 显示对应的提示元素
+	    $element.show();
+	});
 
 /***/ }),
 
-/***/ 105:
+/***/ 109:
 /***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 107:
+/***/ 111:
+/***/ (function(module, exports, __webpack_require__) {
+
+	__webpack_require__(112);
+
+/***/ }),
+
+/***/ 112:
 /***/ (function(module, exports) {
 
-	module.exports = "\r\n{{#navList}}\r\n{{#isActive}}\r\n<li class=\"nav-item active\">\r\n{{/isActive}}\r\n{{^isActive}}\r\n<li class=\"nav-item\">\r\n{{/isActive}}\r\n    <a class=\"link\" href=\"{{href}}\">{{desc}}</a>\r\n</li>\r\n{{/navList}} ";
+	// removed by extract-text-webpack-plugin
 
 /***/ })
 
